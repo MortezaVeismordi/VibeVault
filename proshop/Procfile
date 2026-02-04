@@ -1,2 +1,2 @@
-release: bash build.sh
+release: bash ../build.sh
 web: cd proshop && gunicorn proshop.wsgi --bind 0.0.0.0:$PORT
