@@ -6,7 +6,7 @@ from .base import *
 
 # Override base settings for production
 DEBUG = False
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['proshop.com', 'www.proshop.com'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['vibevault-production.up.railway.app', '*.railway.app', 'localhost', '127.0.0.1'])
 
 # Database: PostgreSQL with environment URL
 if env('DATABASE_URL', default=None):
