@@ -9,6 +9,7 @@ DEBUG = False
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['vibevault-production.up.railway.app', '*.railway.app', 'localhost', '127.0.0.1'])
 
 # Database: PostgreSQL with environment URL
+# Priority: DATABASE_URL > Individual DB settings > Defaults
 if env('DATABASE_URL', default=None):
     import dj_database_url
     DATABASES = {
@@ -20,28 +21,37 @@ if env('DATABASE_URL', default=None):
         )
     }
 else:
+    # Use individual database settings with defaults
+    # WARNING: These defaults are for development only!
+    # Make sure to set proper environment variables in production
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env('DB_NAME'),
-            'USER': env('DB_USER'),
-            'PASSWORD': env('DB_PASSWORD'),
-            'HOST': env('DB_HOST'),
+            'NAME': env('DB_NAME', default='vibevault_db'),
+            'USER': env('DB_USER', default='postgres'),
+            'PASSWORD': env('DB_PASSWORD', default='postgres'),
+            'HOST': env('DB_HOST', default='localhost'),
             'PORT': env.int('DB_PORT', default=5432),
             'ATOMIC_REQUESTS': True,
             'CONN_MAX_AGE': 600,
             'CONN_HEALTH_CHECKS': True,
         }
     }
+    
+    # Log warning if using default database credentials
+    import logging
+    logger = logging.getLogger(__name__)
+    if env('DB_NAME', default=None) is None:
+        logger.warning('⚠️  Using default database settings! Set DATABASE_URL or DB_* environment variables for production.')
 
 # Email: SMTP backend for production
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST', default='smtp.gmail.com')
 EMAIL_PORT = env.int('EMAIL_PORT', default=587)
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='noreply@proshop.com')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='noreply@vibevault.com')
 
 # Remove debug toolbar from production
 INSTALLED_APPS = [app for app in INSTALLED_APPS if app != 'debug_toolbar']
