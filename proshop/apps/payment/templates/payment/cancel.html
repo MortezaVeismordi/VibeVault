@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancelled - Proshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+            <!-- Cancel Icon -->
+            <div class="flex justify-center mb-6">
+                <div class="rounded-full bg-red-100 p-3">
+                    <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl font-bold text-center text-gray-900 mb-2">Payment Cancelled</h1>
+            <p class="text-center text-gray-600 mb-6">{{ message }}</p>
+
+            <!-- Important Notice -->
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                <p class="text-sm text-yellow-900">
+                    <strong>Good news:</strong> Your payment was not processed, so no charges have been made to your account.
+                </p>
+            </div>
+
+            <!-- Session Info -->
+            {% if session_id %}
+            <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                <p class="text-xs text-gray-600 mb-2">Session ID:</p>
+                <p class="text-sm font-mono text-gray-900 break-all">{{ session_id }}</p>
+            </div>
+            {% endif %}
+
+            <!-- What to Do Next -->
+            <div class="mb-6">
+                <h2 class="text-sm font-semibold text-gray-900 mb-3">What would you like to do?</h2>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">•</span>
+                        <span>Review your cart and try again</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">•</span>
+                        <span>Continue shopping for other items</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 mr-2">•</span>
+                        <span>Contact support if you need help</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-3">
+                <a href="/api/cart/" 
+                   class="block w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition text-center">
+                    Return to Cart
+                </a>
+
+                <a href="/" 
+                   class="block w-full bg-gray-600 text-white font-semibold py-2 rounded-lg hover:bg-gray-700 transition text-center">
+                    Continue Shopping
+                </a>
+            </div>
+
+            <!-- Support -->
+            <p class="text-center text-xs text-gray-500 mt-6">
+                Having trouble? <a href="mailto:support@proshop.com" class="text-blue-600 hover:underline">Contact our support team</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
