@@ -1,11 +1,11 @@
 # Core Django
-Django==4.2.10
+Django==4.2.11
 psycopg2-binary==2.9.9
 Pillow==11.0.0
 
 # REST API
-djangorestframework==3.15.0
-drf-spectacular==0.27.0
+djangorestframework==3.14.0
+drf-spectacular==0.27.2
 
 # CORS & Middleware
 django-cors-headers==4.3.1
@@ -13,7 +13,7 @@ django-filter==24.1
 
 # Forms
 django-crispy-forms==2.1
-crispy-bootstrap5==2.0.2
+crispy-bootstrap5==2025.6
 
 # Configuration
 python-decouple==3.8
@@ -24,7 +24,7 @@ dj-database-url==2.1.0
 django-redis==5.4.0
 
 # Payment
-stripe==10.0.0
+stripe==10.2.0
 
 # Server
 gunicorn==21.2.0
