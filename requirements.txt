@@ -12,7 +12,7 @@ django-cors-headers==4.3.1
 django-filter==24.1
 
 # Forms
-django-crispy-forms==2.1
+django-crispy-forms==2.3
 crispy-bootstrap5==2025.6
 
 # Configuration
