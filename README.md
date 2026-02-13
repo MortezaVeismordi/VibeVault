@@ -480,6 +480,6 @@ For support, email support@proshop.com or open an issue on GitHub.
 
 ---
 
-**Built with ❤️ by [Your Name]**
+**Built with ❤️ by [Morteza Veismordi]**
 
 Last updated: February 4, 2026
